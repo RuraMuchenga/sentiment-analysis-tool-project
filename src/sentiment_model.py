@@ -19,7 +19,7 @@ def train_model(df):
     print(f"Accuracy: {accuracy_score(y_test, y_pred)}")
     print(classification_report(y_test, y_pred))
     
-    # Save the model and vectorizer
+    
     with open('models/sentiment_model.pkl', 'wb') as model_file:
         pickle.dump(model, model_file)
     with open('models/vectorizer.pkl', 'wb') as vectorizer_file:
