@@ -13,9 +13,9 @@ nltk.data.path.append(nltk_data_path)
 
 
 # Download necessary NLTK resources
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
+# nltk.download('punkt')
+# nltk.download('stopwords')
+# nltk.download('wordnet')
 
 # Load stopwords once
 stop_words = set(stopwords.words('english'))
