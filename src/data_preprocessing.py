@@ -64,9 +64,13 @@
 
 
 
-
 import os
 import nltk
+import pandas as pd
+import re
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
 
 # Ensure the NLTK data path is correctly set
 nltk_data_path = os.path.join(os.path.dirname(__file__), 'nltk_data')
@@ -76,15 +80,12 @@ if not os.path.exists(nltk_data_path):
 nltk.data.path.append(nltk_data_path)
 
 # Download necessary NLTK resources
-nltk.download('punkt', download_dir=nltk_data_path)
-nltk.download('stopwords', download_dir=nltk_data_path)
-nltk.download('wordnet', download_dir=nltk_data_path)
-
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.stem import WordNetLemmatizer
-import pandas as pd
-import re
+try:
+    nltk.download('punkt', download_dir=nltk_data_path)
+    nltk.download('stopwords', download_dir=nltk_data_path)
+    nltk.download('wordnet', download_dir=nltk_data_path)
+except Exception as e:
+    raise RuntimeError(f"Error downloading NLTK resources: {e}")
 
 # Load stopwords once
 stop_words = set(stopwords.words('english'))
