@@ -65,15 +65,17 @@
 
 
 
-
 import os
 import nltk
 
 # Ensure the NLTK data path is correctly set
 nltk_data_path = os.path.join(os.path.dirname(__file__), 'nltk_data')
+if not os.path.exists(nltk_data_path):
+    os.makedirs(nltk_data_path)
+
 nltk.data.path.append(nltk_data_path)
 
-# Force download of necessary NLTK resources
+# Download necessary NLTK resources
 nltk.download('punkt', download_dir=nltk_data_path)
 nltk.download('stopwords', download_dir=nltk_data_path)
 nltk.download('wordnet', download_dir=nltk_data_path)
