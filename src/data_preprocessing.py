@@ -67,7 +67,6 @@
 
 
 
-
 import pandas as pd
 import re
 import nltk
@@ -83,28 +82,10 @@ nltk.data.path.append(nltk_data_path)
 
 # Function to download NLTK resources if they are not already downloaded
 def download_nltk_resources():
-    try:
-        nltk.data.find('tokenizers/punkt')
-    except LookupError:
-        nltk.download('punkt', download_dir=nltk_data_path)
+    nltk.download('punkt', download_dir=nltk_data_path)
+    nltk.download('stopwords', download_dir=nltk_data_path)
+    nltk.download('wordnet', download_dir=nltk_data_path)
 
-    try:
-        nltk.data.find('corpora/stopwords')
-    except LookupError:
-        nltk.download('stopwords', download_dir=nltk_data_path)
-
-    try:
-        nltk.data.find('corpora/wordnet')
-    except LookupError:
-        nltk.download('wordnet', download_dir=nltk_data_path)
-
-    # Explicitly download punkt_tab if it is missing
-    try:
-        nltk.data.find('tokenizers/punkt_tab')
-    except LookupError:
-        nltk.download('punkt_tab', download_dir=nltk_data_path)
-
-# Call the function to download necessary NLTK resources
 download_nltk_resources()
 
 # Load stopwords once
