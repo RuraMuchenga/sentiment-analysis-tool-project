@@ -146,7 +146,6 @@
 
 
 
-
 import os
 import nltk
 import pandas as pd
@@ -156,13 +155,14 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 
 # Ensure the NLTK data path is correctly set
-nltk_data_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'nltk_data')
+# Adjust path to where your nltk_data is in the GitHub repo
+nltk_data_path = os.path.join(os.path.dirname(__file__), '..', 'nltk_data')
 if not os.path.exists(nltk_data_path):
     os.makedirs(nltk_data_path)
 
 nltk.data.path.append(nltk_data_path)
 
-# Download necessary NLTK resources
+# Download necessary NLTK resources from the specified directory
 try:
     nltk.download('punkt', download_dir=nltk_data_path)
     nltk.download('stopwords', download_dir=nltk_data_path)
