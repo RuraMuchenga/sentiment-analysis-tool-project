@@ -26,3 +26,4 @@ try:
     nltk.download('wordnet', download_dir=nltk_data_path)
 except Exception as e:
     logger.error(f"Error downloading NLTK resources: {e}")
+print(nltk.data.path)
