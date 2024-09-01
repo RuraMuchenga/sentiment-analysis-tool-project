@@ -244,17 +244,11 @@
 
 
 
-
-
 import os
 import nltk
-import streamlit as st
-import pandas as pd
-from data_preprocessing import preprocess_text, preprocess_data
-from model_training import train_model, predict_sentiment
 
 # Define the exact path to your local nltk_data directory
-nltk_data_path = os.path.join(os.path.dirname(__file__), 'nltk_data')
+nltk_data_path = os.path.join('C:\\Users\\ruram\\Sentiment-Analysis-Tool-Project', 'nltk_data')
 
 # Append the path to NLTK's data path
 nltk.data.path.append(nltk_data_path)
@@ -263,6 +257,11 @@ nltk.data.path.append(nltk_data_path)
 nltk.download('punkt', download_dir=nltk_data_path)
 nltk.download('stopwords', download_dir=nltk_data_path)
 nltk.download('wordnet', download_dir=nltk_data_path)
+
+import streamlit as st
+import pandas as pd
+from data_preprocessing import preprocess_text, preprocess_data
+from model_training import train_model, predict_sentiment
 
 def main():
     st.title("Sentiment Analysis Tool")
