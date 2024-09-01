@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "nltk_data",
+			"path": "AppData/Roaming/nltk_data"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
