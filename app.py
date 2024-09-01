@@ -242,18 +242,14 @@
 
 
 
-
-
 import os
 import nltk
 
-# Define the exact path to your local nltk_data directory
-nltk_data_path = os.path.join('C:\\Users\\ruram\\Sentiment-Analysis-Tool-Project', 'nltk_data')
-
-# Append the path to NLTK's data path
+# Set the path to your NLTK data
+nltk_data_path = 'C:\\Users\\ruram\\Sentiment-Analysis-Tool-Project\\nltk_data'
 nltk.data.path.append(nltk_data_path)
 
-# Download necessary NLTK resources if not already present
+# Attempt to download resources if they aren't already present
 nltk.download('punkt', download_dir=nltk_data_path)
 nltk.download('stopwords', download_dir=nltk_data_path)
 nltk.download('wordnet', download_dir=nltk_data_path)
@@ -265,22 +261,22 @@ from model_training import train_model, predict_sentiment
 
 def main():
     st.title("Sentiment Analysis Tool")
-    
-    # Upload file
+
+    # File upload functionality
     uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
         df = preprocess_data(df)
-        
+
         st.write("Data preview:")
         st.write(df.head())
-        
-        # Train model
+
+        # Model training
         if st.button('Train Model'):
             model = train_model(df)
             st.write("Model trained!")
-        
-        # Predict sentiment
+
+        # Sentiment prediction
         user_input = st.text_area("Enter text to analyze:")
         if st.button('Predict Sentiment'):
             if user_input:
