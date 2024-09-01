@@ -142,8 +142,6 @@
 
 
 
-
-
 import os
 import nltk
 import pandas as pd
@@ -164,7 +162,6 @@ try:
     nltk.download('punkt', download_dir=nltk_data_path)
     nltk.download('stopwords', download_dir=nltk_data_path)
     nltk.download('wordnet', download_dir=nltk_data_path)
-    nltk.download('omw-1.4', download_dir=nltk_data_path)
 except Exception as e:
     raise RuntimeError(f"Error downloading NLTK resources: {e}")
 
@@ -181,7 +178,12 @@ def preprocess_text(text):
     text = re.sub(r'\s+', ' ', text)  # Replace multiple spaces with a single space
 
     # Tokenize and remove stopwords
-    tokens = word_tokenize(text)
+    try:
+        tokens = word_tokenize(text)
+    except LookupError:
+        nltk.download('punkt', download_dir=nltk_data_path)
+        tokens = word_tokenize(text)
+
     tokens = [word for word in tokens if word not in stop_words]
 
     # Lemmatize
