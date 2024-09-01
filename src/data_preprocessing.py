@@ -68,7 +68,6 @@
 
 
 
-
 import pandas as pd
 import re
 import nltk
@@ -98,6 +97,12 @@ def download_nltk_resources():
         nltk.data.find('corpora/wordnet')
     except LookupError:
         nltk.download('wordnet', download_dir=nltk_data_path)
+
+    # Explicitly download punkt_tab if it is missing
+    try:
+        nltk.data.find('tokenizers/punkt_tab')
+    except LookupError:
+        nltk.download('punkt_tab', download_dir=nltk_data_path)
 
 # Call the function to download necessary NLTK resources
 download_nltk_resources()
