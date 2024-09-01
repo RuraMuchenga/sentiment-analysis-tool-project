@@ -66,27 +66,23 @@
 
 
 
-
-import pandas as pd
-import re
-import nltk
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.stem import WordNetLemmatizer
-
 import os
+import nltk
 
-# Set the NLTK data path
+# Ensure the NLTK data path is correctly set
 nltk_data_path = os.path.join(os.path.dirname(__file__), 'nltk_data')
 nltk.data.path.append(nltk_data_path)
 
-# Function to download NLTK resources if they are not already downloaded
-def download_nltk_resources():
-    nltk.download('punkt', download_dir=nltk_data_path)
-    nltk.download('stopwords', download_dir=nltk_data_path)
-    nltk.download('wordnet', download_dir=nltk_data_path)
+# Force download of necessary NLTK resources
+nltk.download('punkt', download_dir=nltk_data_path)
+nltk.download('stopwords', download_dir=nltk_data_path)
+nltk.download('wordnet', download_dir=nltk_data_path)
 
-download_nltk_resources()
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
+import pandas as pd
+import re
 
 # Load stopwords once
 stop_words = set(stopwords.words('english'))
